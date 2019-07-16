@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a href="#" class="navbar-brand">Movie Search</a>
+  <div class="mr-auto"></div>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search Movie Title" [value]="title"
+      (input)="title = $event.target.value" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="" (click)="findMovies($event,title)">Search</button>
+  </form>
+</nav>
+
+<div class="container-fluid banner">
+  <h2 class="pt-5">Find Your Favorite Movies</h2>
+  <h3>with a simple search</h3>
+</div>
+
+
+<div class="container text-center pt-4" *ngIf="found">
+  <h4>Search Results</h4>
+  <div class="card" *ngFor="let movie of movies">
+    <h4 class="card-title"><a routerLink="/detail/{{movie.id}}">{{movie.title}}</a></h4>
+    <p class="card-text">{{movie.overview}}</p>
+
+  </div>
+</div>
